@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssh anoralabs.shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="terminal">
+            <p id="intro-text" class="text"></p>
+            <p id="command-text" class="text">
+                <span id="command"></span><span id="cursor" class="cursor"></span>
+            </p>
+        </div>
+        
+        <!-- Waitlist Form -->
+        <div class="waitlist">
+            <!-- Initial Button -->
+            <button id="waitlist-btn" class="waitlist-trigger">join waitlist +</button>
+            
+            <!-- Name Input -->
+            <div id="name-input-wrapper" class="input-wrapper hidden">
+                <input type="text" id="name-input" class="waitlist-input" placeholder="your name" autocomplete="off">
+                <div class="input-actions">
+                    <button id="name-clear" class="action-btn hidden" aria-label="Clear">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button id="name-confirm" class="action-btn hidden" aria-label="Confirm">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Email Input -->
+            <div id="email-input-wrapper" class="input-wrapper hidden">
+                <input type="email" id="email-input" class="waitlist-input" placeholder="your email" autocomplete="off">
+                <div class="input-actions">
+                    <button id="email-clear" class="action-btn hidden" aria-label="Clear">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button id="email-submit" class="action-btn hidden" aria-label="Submit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Success Message -->
+            <span id="success-msg" class="success-text hidden">you're in</span>
+        </div>
+        
+        <a href="https://x.com/abdibrokhim" class="twitter">@abdibrokhim</a>
+    </div>
+    
+    <!-- Convex Client -->
+    <script src="https://unpkg.com/convex@1.3.1/dist/browser.bundle.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

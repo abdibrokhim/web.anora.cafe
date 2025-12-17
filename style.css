@@ -1,0 +1,330 @@
+:root {
+    --bg-dark: #111111;
+    --text-white: #ffffff;
+    --text-gray: #666666;
+    --text-dimmed: #444444;
+    --cursor-pink: #ff24bd;
+    --cursor-glow: #ab5998;
+    --success-green: #4ade80;
+    --error-red: #f87171;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+}
+
+.terminal {
+    position: relative;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    position: absolute;
+    color: var(--text-white);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.twitter {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-gray);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    z-index: 1000;
+}
+
+.twitter:hover {
+    color: var(--text-white);
+}
+
+#intro-text {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#intro-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#command-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#command {
+    display: inline;
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 1.2em;
+    background-color: var(--cursor-pink);
+    margin-left: 4px;
+    vertical-align: middle;
+    opacity: 0;
+    box-shadow: 0 0 8px var(--cursor-glow);
+    transition: opacity 0.1s ease;
+}
+
+.cursor.visible {
+    opacity: 1;
+}
+
+.cursor.blink {
+    animation: blink 530ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ==================== WAITLIST STYLES ==================== */
+
+.waitlist {
+    position: relative;
+    min-height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.waitlist-trigger {
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.waitlist-trigger:hover {
+    color: var(--text-white);
+}
+
+.waitlist-trigger.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    position: absolute;
+}
+
+/* Input Wrapper */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-wrapper.hidden {
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.input-wrapper.visible {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+
+/* Waitlist Input */
+.waitlist-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--text-dimmed);
+    color: var(--text-white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    padding: 8px 0;
+    width: 160px;
+    outline: none;
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.waitlist-input::placeholder {
+    color: var(--text-dimmed);
+    transition: color 0.3s ease;
+}
+
+.waitlist-input:focus {
+    border-color: var(--text-gray);
+}
+
+.waitlist-input:focus::placeholder {
+    color: var(--text-gray);
+}
+
+/* Input Actions */
+.input-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--text-dimmed);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transform: scale(1);
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.action-btn:hover {
+    color: var(--text-white);
+}
+
+.action-btn.hidden {
+    display: none;
+}
+
+.action-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Confirm button hover - green tint */
+#name-confirm:hover,
+#email-submit:hover {
+    color: var(--success-green);
+}
+
+/* Clear button hover - subtle red */
+#name-clear:hover,
+#email-clear:hover {
+    color: var(--error-red);
+}
+
+/* Success Message */
+.success-text {
+    color: var(--success-green);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.success-text.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    position: absolute;
+}
+
+.success-text.visible {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+/* Smooth text rendering */
+.text,
+.waitlist-trigger,
+.waitlist-input,
+.success-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Loading state for submit */
+.action-btn.loading {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .text {
+        font-size: 12px;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .waitlist-input {
+        width: 140px;
+    }
+}

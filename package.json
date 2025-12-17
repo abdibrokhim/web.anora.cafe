@@ -1,0 +1,24 @@
+{
+  "name": "anoradotcafeweb",
+  "version": "1.0.0",
+  "description": "order your coffee via terminal",
+  "main": "script.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdibrokhim/web.anora.cafe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdibrokhim/web.anora.cafe/issues"
+  },
+  "homepage": "https://github.com/abdibrokhim/web.anora.cafe#readme",
+  "dependencies": {
+    "convex": "^1.31.1"
+  }
+}
